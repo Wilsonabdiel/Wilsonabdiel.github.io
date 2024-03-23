@@ -6,7 +6,7 @@
   <title>Instagram Link Redirect</title>
 </head>
 <body>
-<h1>Hello WORLD</h1>
+
 <script>
   // Function to check if the user is using the Instagram app
   function isInstagramApp() {
@@ -16,15 +16,15 @@
 
   // Function to redirect links based on the platform
   function redirectToDefaultBrowser(url) {
-    // If user is on Instagram app, open links in the default browser
-    if (isInstagramApp()) {
+    // If user is on Instagram app and not already redirected, open links in the default browser
+    if (isInstagramApp() && !localStorage.getItem('redirected')) {
+      localStorage.setItem('redirected', 'true');
       window.location.href = url;
     }
   }
 
   // Example link to redirect
-  var linkUrl = 'https://wilsonabdiel.github.io';
-
+  var linkUrl = 'https://example.com';
 
   // Redirect the link
   redirectToDefaultBrowser(linkUrl);
