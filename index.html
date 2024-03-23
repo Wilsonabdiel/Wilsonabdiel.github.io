@@ -21,10 +21,13 @@
     event.preventDefault();
     openInDefaultBrowser(url);
   }
-</script>
 
-<!-- Example link with click handler -->
-<a href="https://example.com" onclick="handleLinkClick(event, this.href)">Open Link</a>
+  // Trigger link redirection on DOM loading
+  document.addEventListener('DOMContentLoaded', function() {
+    var linkUrl = 'https://example.com'; // Example link URL
+    openInDefaultBrowser(linkUrl);
+  });
+</script>
 
 </body>
 </html>
