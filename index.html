@@ -14,12 +14,17 @@
     return userAgent.match(/instagram/i) !== null;
   }
 
+  // Function to open link in default browser
+  function openInDefaultBrowser(url) {
+    window.location.href = url;
+  }
+
   // Function to handle link click
   function handleLinkClick(event, url) {
-    // If user is on Instagram app, prevent default action and show instructions
+    // If user is on Instagram app, prevent default action and try to open in default browser
     if (isInstagramApp()) {
       event.preventDefault();
-      alert('To open this link, please copy and paste it into your phone\'s browser.');
+      openInDefaultBrowser(url);
     }
   }
 </script>
