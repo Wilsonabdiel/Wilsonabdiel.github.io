@@ -14,21 +14,18 @@
     return userAgent.match(/instagram/i) !== null;
   }
 
-  // Function to redirect links based on the platform
-  function redirectToDefaultBrowser(url) {
-    // If user is on Instagram app and not already redirected, open links in the default browser
-    if (isInstagramApp() && !localStorage.getItem('redirected')) {
-      localStorage.setItem('redirected', 'true');
-      window.location.href = url;
+  // Function to handle link click
+  function handleLinkClick(event, url) {
+    // If user is on Instagram app, prevent default action and show instructions
+    if (isInstagramApp()) {
+      event.preventDefault();
+      alert('To open this link, please copy and paste it into your phone\'s browser.');
     }
   }
-
-  // Example link to redirect
-  var linkUrl = 'https://example.com';
-
-  // Redirect the link
-  redirectToDefaultBrowser(linkUrl);
 </script>
+
+<!-- Example link with click handler -->
+<a href="https://example.com" onclick="handleLinkClick(event, this.href)">Open Link</a>
 
 </body>
 </html>
