@@ -8,31 +8,23 @@
 <body>
 
 <script>
-  // Function to check if the user is using the Instagram app
-  function isInstagramApp() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    return userAgent.match(/instagram/i) !== null;
-  }
-
-  // Function to open link in default browser
+  // Function to open link in default browser using Python
   function openInDefaultBrowser(url) {
-    window.location.href = url;
+    // Send a request to Python script to open the link
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "open_browser.py?url=" + encodeURIComponent(url), true);
+    xhr.send();
   }
 
   // Function to handle link click
-  function handleLinkClick(url) {
-    // If user is on Instagram app, try to open in default browser
-    if (isInstagramApp()) {
-      openInDefaultBrowser(url);
-    }
+  function handleLinkClick(event, url) {
+    event.preventDefault();
+    openInDefaultBrowser(url);
   }
-
-  // Handle link redirection when the page is loaded
-  document.addEventListener('DOMContentLoaded', function() {
-    var linkUrl = 'https://example.com'; // Example link URL
-    handleLinkClick(linkUrl);
-  });
 </script>
+
+<!-- Example link with click handler -->
+<a href="https://example.com" onclick="handleLinkClick(event, this.href)">Open Link</a>
 
 </body>
 </html>
