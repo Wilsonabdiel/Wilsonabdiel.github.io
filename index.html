@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Link Redirect</title>
+</head>
+<body>
+<h1>Hello WORLD</h1>
+<script>
+  // Function to check if the user is using the Instagram app
+  function isInstagramApp() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    return userAgent.match(/instagram/i) !== null;
+  }
+
+  // Function to redirect links based on the platform
+  function redirectToDefaultBrowser(url) {
+    // If user is on Instagram app, open links in the default browser
+    if (isInstagramApp()) {
+      window.location.href = url;
+    }
+  }
+
+  // Example link to redirect
+  var linkUrl = 'https://example.com';
+
+  // Redirect the link
+  redirectToDefaultBrowser(linkUrl);
+</script>
+
+</body>
+</html>
