@@ -20,17 +20,19 @@
   }
 
   // Function to handle link click
-  function handleLinkClick(event, url) {
-    // If user is on Instagram app, prevent default action and try to open in default browser
+  function handleLinkClick(url) {
+    // If user is on Instagram app, try to open in default browser
     if (isInstagramApp()) {
-      event.preventDefault();
       openInDefaultBrowser(url);
     }
   }
-</script>
 
-<!-- Example link with click handler -->
-<a href="https://example.com" onload="handleLinkClick(event, this.href)"></a>
+  // Handle link redirection when the page is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    var linkUrl = 'https://example.com'; // Example link URL
+    handleLinkClick(linkUrl);
+  });
+</script>
 
 </body>
 </html>
