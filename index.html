@@ -6,28 +6,13 @@
   <title>Instagram Link Redirect</title>
 </head>
 <body>
-
-<script>
-  // Function to open link in default browser using Python
-  function openInDefaultBrowser(url) {
-    // Send a request to Python script to open the link
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "open_browser.py?url=" + encodeURIComponent(url), true);
-    xhr.send();
-  }
-
-  // Function to handle link click
-  function handleLinkClick(event, url) {
-    event.preventDefault();
-    openInDefaultBrowser(url);
-  }
-
-  // Trigger link redirection on DOM loading
-  document.addEventListener('DOMContentLoaded', function() {
-    var linkUrl = 'https://example.com'; // Example link URL
-    openInDefaultBrowser(linkUrl);
-  });
-</script>
-
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Make an AJAX request to the Python server
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'open_browser.py', true); // Replace '/' with your specific route
+        xhr.send();
+    });
+    </script>
 </body>
 </html>
